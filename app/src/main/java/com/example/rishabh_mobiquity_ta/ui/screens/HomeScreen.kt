@@ -11,6 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.rishabh_mobiquity_ta.common.ApiState
+import com.example.rishabh_mobiquity_ta.ui.components.Loader
 import com.example.rishabh_mobiquity_ta.ui.components.ShoppingList
 import com.example.rishabh_mobiquity_ta.ui.data.entity.ShoppingResponse
 import com.example.rishabh_mobiquity_ta.ui.viewmodel.ShoppingViewModel
@@ -28,6 +29,7 @@ fun HomeScreen (
         when(shoppingResponse){
             is ApiState.Loading ->{
                 Log.d(TAG, "Inside Loading")
+                Loader()
             }
             is ApiState.Success ->{
                 val response = (shoppingResponse as ApiState.Success).data

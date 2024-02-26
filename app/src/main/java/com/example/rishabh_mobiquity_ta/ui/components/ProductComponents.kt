@@ -8,6 +8,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -31,18 +32,18 @@ fun ProductComponents(
     navHostController: NavController
 ) {
     Log.d("main", "MovieDetailScreen: $product_name")
-    Box(modifier = Modifier
+    Column(modifier = Modifier
         .fillMaxSize()
         .background(BackgroundColor)) {
-        ShoppingHeader(product_name!!){
+        ShoppingHeader(icon = R.drawable.back, product_name!!){
             navHostController.popBackStack()
         }
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = 10.dp, vertical = 10.dp),
+                .padding(horizontal = 10.dp),
         ) {
-            SpacerHeight()
+            SpacerHeight(15.dp)
             Image(
                 painter = rememberAsyncImagePainter(
                     AppConstants.APP_BASE_URL + image_url,
@@ -50,7 +51,7 @@ fun ProductComponents(
                     error = painterResource(R.drawable.error)
                 ),
                 contentDescription = null,
-                modifier = Modifier.align(Alignment.CenterHorizontally).size(300.dp)
+                modifier = Modifier.align(Alignment.CenterHorizontally).size(300.dp),
             )
             SpacerHeight()
             Text(

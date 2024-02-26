@@ -19,7 +19,10 @@ import com.example.rishabh_mobiquity_ta.R
 import com.example.rishabh_mobiquity_ta.ui.theme.RedColor
 
 @Composable
-fun ShoppingHeader(text_str: String, onClick:() -> Unit = {}){
+fun ShoppingHeader(
+    @DrawableRes icon: Int,
+    text_str: String,
+    onGettingClick:() -> Unit){
     Box(modifier = Modifier
         .fillMaxWidth()
         .background(RedColor)){
@@ -30,7 +33,7 @@ fun ShoppingHeader(text_str: String, onClick:() -> Unit = {}){
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Row {
-                AppIconButton(icon = R.drawable.menu,onClick = {onClick})
+                AppIconButton(icon){onGettingClick()}
                 SpacerWidth(10.dp)
                 Text(text = text_str, style = TextStyle(
                     fontSize = 19.sp,
@@ -38,7 +41,7 @@ fun ShoppingHeader(text_str: String, onClick:() -> Unit = {}){
                     color = Color.White
                 ))
             }
-            AppIconButton(icon = R.drawable.search)
+            AppIconButton(icon = R.drawable.search){}
         }
     }
 }
@@ -48,9 +51,9 @@ fun AppIconButton(
     @DrawableRes icon: Int,
     tint: Color = Color.White,
     modifier: Modifier = Modifier,
-    onClick:() -> Unit = {}
+    onGettingClick:() -> Unit
 ){
-    IconButton(onClick = {onClick}, modifier = modifier.size(28.dp)) {
+    IconButton(onClick = {onGettingClick()}, modifier = modifier.size(28.dp)) {
         Icon(painter = painterResource(id = icon), contentDescription = "", tint = tint)
     }
 }

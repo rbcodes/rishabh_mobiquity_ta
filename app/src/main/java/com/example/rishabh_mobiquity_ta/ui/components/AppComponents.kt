@@ -50,6 +50,25 @@ fun Loader(){
 }
 
 @Composable
+fun NoInternetConnection(
+    onGettingClick: () -> Unit
+){
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(8.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(text = "No Internet Connection")
+        SpacerHeight(20.dp)
+        Button(onClick = {onGettingClick()}) {
+            Text(text = "Check Again")
+        }
+    }
+}
+
+@Composable
 fun ShoppingList(
     response: List<ShoppingResponse>,
     navHostController: NavHostController
@@ -62,7 +81,8 @@ fun ShoppingList(
         .fillMaxSize()
         .background(BackgroundColor)){
         Column() {
-            ShoppingHeader("Shopping App")
+            ShoppingHeader(icon = R.drawable.menu, "Shopping App"){
+            }
             Card (
                 modifier = Modifier.fillMaxWidth(),
                 elevation = 1.dp
@@ -82,7 +102,7 @@ fun ShoppingList(
                 for (resp in response){
                     if(menuState == resp.name){
                         items(resp.products){
-                            ShowProducts(products = it){
+                            ShowProducts(products = it, navHostController){
                                 navHostController.navigate(Routes.PRODUCT_DETAILS+"?"
                                         +it.url+"?"
                                         +it.name+"?"
@@ -127,6 +147,7 @@ fun CustomChip(
 @Composable
 fun ShowProducts(
     products: Products,
+    navHostController: NavHostController,
     onGettingClick: () -> Unit
 ){
     Card(
@@ -186,7 +207,13 @@ fun ShowProducts(
                     )
                     SpacerHeight()
                 }
-                Button(onClick = { },
+                Button(onClick = {
+                    navHostController.navigate(Routes.PRODUCT_DETAILS+"?"
+                            +products.url+"?"
+                            +products.name+"?"
+                            +products.salePrice.currency +" "+ products.salePrice.amount
+                    )
+                },
                     modifier = Modifier.width(91.dp),
                     shape = RoundedCornerShape(18.dp),
                     colors = ButtonDefaults.buttonColors(
@@ -207,3 +234,6 @@ fun ShowProducts(
         }
     }
 }
+
+
+
