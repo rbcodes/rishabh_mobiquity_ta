@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import coil.compose.rememberAsyncImagePainter
+import com.example.rishabh_mobiquity_ta.ui.MainActivity
 import com.example.rishabh_mobiquity_ta.ui.data.AppConstants
 import com.example.rishabh_mobiquity_ta.ui.data.entity.Products
 import com.example.rishabh_mobiquity_ta.ui.data.entity.ShoppingResponse

@@ -25,7 +25,6 @@ class ShoppingViewModel @Inject constructor(
     val shoppingData : StateFlow<ApiState<List<ShoppingResponse>>> = _shoppingData
 
     init {
-//        Log.d(TAG, "Inside View Model")
         getShoppingData()
     }
 

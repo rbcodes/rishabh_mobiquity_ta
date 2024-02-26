@@ -1,5 +1,6 @@
 package com.example.rishabh_mobiquity_ta.di
 
+import com.example.rishabh_mobiquity_ta.ui.MainActivity
 import com.example.rishabh_mobiquity_ta.ui.data.AppConstants
 import com.example.rishabh_mobiquity_ta.ui.data.api.ApiService
 import com.example.rishabh_mobiquity_ta.ui.data.datasource.ShoppingDataSource
